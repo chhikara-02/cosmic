@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Cosmic Love Connection ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Floating hearts */
+        .heart-float {
+            position: fixed;
+            color: rgba(255, 105, 180, 0.3);
+            font-size: 24px;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Main container */
+        .cosmic-card {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 50px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 105, 180, 0.3);
+            animation: glow 4s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(255,105,180,0.3); }
+            50% { box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 50px rgba(255,105,180,0.6); }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            background: linear-gradient(45deg, #FFD700, #FF69B4, #00FFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Input section */
+        .input-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 40px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .input-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .input-group {
+            flex: 1 1 250px;
+            text-align: center;
+        }
+
+        .input-group label {
+            display: block;
+            color: #FFD700;
+            font-size: 1.5rem;
+            font-family: 'Dancing Script', cursive;
+            margin-bottom: 10px;
+        }
+
+        .date-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 60px;
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+            border: 2px solid rgba(255, 105, 180, 0.5);
+            transition: all 0.3s;
+        }
+
+        .date-input:focus {
+            outline: none;
+            border-color: #FF69B4;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .date-input::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+        .heart-icon-large {
+            font-size: 3rem;
+            color: #FF69B4;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin: 0 10px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.2); }
+        }
+
+        .magic-button {
+            background: linear-gradient(45deg, #FF69B4, #FF1493);
+            border: none;
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.4rem;
+            border-radius: 60px;
+            cursor: pointer;
+            margin: 20px auto 30px;
+            display: block;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.5);
+            transition: all 0.3s;
+            width: fit-content;
+        }
+
+        .magic-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.8);
+        }
+
+        .magic-button:active {
+            transform: scale(0.95);
+        }
+
+        .results {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 40px;
+            padding: 30px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        .result-text {
+            flex: 1;
+        }
+
+        .highlight {
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .cosmic-score {
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 30px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .score-number {
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .score-label {
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        .connection-message {
+            font-size: 1.4rem;
+            color: #FF69B4;
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+
+    <div class="cosmic-card">
+        <h1>✨ Cosmic Love Connection ✨</h1>
+        <div class="subtitle">Enter your birthdates and discover your cosmic destiny! 💫</div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <div class="input-row">
+                <div class="input-group">
+                    <label><i class="fas fa-user"></i> Your Birthday</label>
+                    <input type="date" id="person1Date" class="date-input" value="2002-12-03">
+                </div>
+                <div class="heart-icon-large">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-heart"></i> Their Birthday</label>
+                    <input type="date" id="person2Date" class="date-input" value="2007-11-11">
+                </div>
+            </div>
+        </div>
+
+        <button class="magic-button" onclick="revealConnection()">
+            <i class="fas fa-magic"></i> Reveal Cosmic Connection
+        </button>
+
+        <!-- Results Section -->
+        <div class="results" id="results">
+            <!-- Results will be populated by JavaScript -->
+        </div>
+
+        <div class="footer">
+            <i class="fas fa-star"></i> The universe has a plan for every love story <i class="fas fa-star"></i>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create floating hearts
+        function createFloatingHearts() {
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('i');
+                heart.className = 'fas fa-heart heart-float';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.color = `hsl(${Math.random() * 20 + 330}, 100%, 70%)`;
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 10000);
+            }
+        }
+
+        setInterval(createFloatingHearts, 5000);
+        createStars();
+
+        // Format date to DD/MM/YYYY
+        function formatDate(dateStr) {
+            if (!dateStr) return null;
+            const [year, month, day] = dateStr.split('-');
+            return `${day}/${month}/${year}`;
+        }
+
+        // Calculate life path number
+        function getLifePath(dateStr) {
+            if (!dateStr) return null;
+            let digits = dateStr.replace(/\//g, '').split('').map(Number);
+            let sum = digits.reduce((a,b) => a+b, 0);
+            while (sum > 9) {
+                sum = sum.toString().split('').map(Number).reduce((a,b) => a+b, 0);
+            }
+            return sum;
+        }
+
+        // Calculate days between two dates
+        function daysBetween(date1, date2) {
+            if (!date1 || !date2) return null;
+            const d1 = new Date(date1.split('/').reverse().join('-') + 'T00:00:00');
+            const d2 = new Date(date2.split('/').reverse().join('-') + 'T00:00:00');
+            const diffTime = Math.abs(d2 - d1);
+            return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        }
+
+        // Calculate years, months, days difference
+        function dateDifference(date1, date2) {
+            if (!date1 || !date2) return null;
+            const [d1, m1, y1] = date1.split('/').map(Number);
+            const [d2, m2, y2] = date2.split('/').map(Number);
+            
+            let years = y2 - y1;
+            let months = m2 - m1;
+            let days = d2 - d1;
+            
+            if (days < 0) {
+                months--;
+                let prevMonth = m2 - 1;
+                let prevMonthYear = y2;
+                if (prevMonth === 0) {
+                    prevMonth = 12;
+                    prevMonthYear--;
+                }
+                let daysInPrevMonth = new Date(prevMonthYear, prevMonth, 0).getDate();
+                days += daysInPrevMonth;
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            return { years, months, days };
+        }
+
+        // Calculate cosmic score (0-100)
+        function calculateCosmicScore(person1, person2) {
+            let score = 0;
+            
+            const lifePath1 = getLifePath(formatDate(person1));
+            const lifePath2 = getLifePath(formatDate(person2));
+            const days = daysBetween(formatDate(person1), formatDate(person2));
+            const diff = dateDifference(formatDate(person1), formatDate(person2));
+            
+            // Same life path: +30 points
+            if (lifePath1 === lifePath2) score += 30;
+            
+            // Days divisible by 11 or 7: +20 points
+            if (days % 11 === 0 || days % 7 === 0) score += 20;
+            
+            // Days divisible by each other's life path: +15 points
+            if (days % lifePath1 === 0 || days % lifePath2 === 0) score += 15;
+            
+            // Years difference matches either life path: +10 points
+            if (diff && (diff.years === lifePath1 || diff.years === lifePath2)) score += 10;
+            
+            // Months difference is 11 or 7: +10 points
+            if (diff && (diff.months === 11 || diff.months === 7)) score += 10;
+            
+            // Sum of years reduces to either life path: +15 points
+            const year1 = parseInt(person1.split('-')[0]);
+            const year2 = parseInt(person2.split('-')[0]);
+            const yearSum = year1 + year2;
+            let reducedSum = yearSum.toString().split('').map(Number).reduce((a,b) => a+b, 0);
+            while (reducedSum > 9) {
+                reducedSum = reducedSum.toString().split('').map(Number).reduce((a,b) => a+b, 0);
+            }
+            if (reducedSum === lifePath1 || reducedSum === lifePath2) score += 15;
+            
+            return Math.min(100, Math.max(0, score));
+        }
+
+        function revealConnection() {
+            const person1 = document.getElementById('person1Date').value;
+            const person2 = document.getElementById('person2Date').value;
+            
+            if (!person1 || !person2) {
+                alert('Please enter both birthdays! 🌟');
+                return;
+            }
+
+            // Format dates
+            const p1Formatted = formatDate(person1);
+            const p2Formatted = formatDate(person2);
+
+            // Get calculations
+            const lifePath1 = getLifePath(p1Formatted);
+            const lifePath2 = getLifePath(p2Formatted);
+            const days = daysBetween(p1Formatted, p2Formatted);
+            const diff = dateDifference(p1Formatted, p2Formatted);
+            const cosmicScore = calculateCosmicScore(person1, person2);
+
+            // Get years
+            const year1 = parseInt(person1.split('-')[0]);
+            const year2 = parseInt(person2.split('-')[0]);
+            const yearSum = year1 + year2;
+            let reducedSum = yearSum.toString().split('').map(Number).reduce((a,b) => a+b, 0);
+            while (reducedSum > 9) {
+                reducedSum = reducedSum.toString().split('').map(Number).reduce((a,b) => a+b, 0);
+            }
+
+            // Determine connection message
+            let connectionMessage = '';
+            let messageEmoji = '';
+            
+            if (cosmicScore >= 80) {
+                connectionMessage = '✨ COSMIC SOULMATES! The universe screams your love! ✨';
+                messageEmoji = '🌌💖🌌';
+            } else if (cosmicScore >= 60) {
+                connectionMessage = '💫 Strong Cosmic Bond! Destined to meet! 💫';
+                messageEmoji = '⭐💕⭐';
+            } else if (cosmicScore >= 40) {
+                connectionMessage = '🌟 Special Connection! The stars smile upon you! 🌟';
+                messageEmoji = '✨💗✨';
+            } else {
+                connectionMessage = '💝 A Beautiful Connection! Love writes its own destiny! 💝';
+                messageEmoji = '🌸💞🌸';
+            }
+
+            // Prepare results HTML
+            let resultsHTML = `
+                <div class="cosmic-score">
+                    <div class="score-number">${cosmicScore}%</div>
+                    <div class="score-label">Cosmic Connection Score</div>
+                    <div class="connection-message">
+                        ${messageEmoji}<br>
+                        ${connectionMessage}
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-calculator" style="color:#FFD700;"></i></div>
+                    <div class="result-text">Your Life Path Number: <span class="highlight">${lifePath1}</span></div>
+                </div>
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-calculator" style="color:#FF69B4;"></i></div>
+                    <div class="result-text">Their Life Path Number: <span class="highlight">${lifePath2}</span></div>
+                </div>
+                ${lifePath1 === lifePath2 ? `
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-star" style="color:#FFD700;"></i></div>
+                    <div class="result-text"><span class="highlight">✨ MAGICAL! You share the same Life Path Number! ✨</span></div>
+                </div>
+                ` : ''}
+                
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-calendar-alt" style="color:#00FFFF;"></i></div>
+                    <div class="result-text">Days between you: <span class="highlight">${days.toLocaleString()}</span></div>
+                </div>
+                
+                ${days % 11 === 0 ? `
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-divide" style="color:#FF69B4;"></i></div>
+                    <div class="result-text">${days.toLocaleString()} ÷ 11 = <span class="highlight">${(days/11).toLocaleString()}</span> (Perfectly divisible by 11!)</div>
+                </div>
+                ` : ''}
+                
+                ${days % 7 === 0 ? `
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-divide" style="color:#FF69B4;"></i></div>
+                    <div class="result-text">${days.toLocaleString()} ÷ 7 = <span class="highlight">${(days/7).toLocaleString()}</span> (Divisible by 7 - lucky number!)</div>
+                </div>
+                ` : ''}
+                
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-clock" style="color:#7B68EE;"></i></div>
+                    <div class="result-text">Time between: <span class="highlight">${diff.years} years, ${diff.months} months, ${diff.days} days</span></div>
+                </div>
+                
+                ${diff.months === 11 || diff.months === 7 ? `
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-magic" style="color:#FF69B4;"></i></div>
+                    <div class="result-text">The month difference (${diff.months}) is a sacred number!</div>
+                </div>
+                ` : ''}
+                
+                ${diff.years === lifePath1 || diff.years === lifePath2 ? `
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-star" style="color:#FFD700;"></i></div>
+                    <div class="result-text">The year difference (${diff.years}) matches a Life Path Number!</div>
+                </div>
+                ` : ''}
+                
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-star" style="color:#FFD700;"></i></div>
+                    <div class="result-text">Sum of your years (${year1} + ${year2}) = ${yearSum} → reduced to <span class="highlight">${reducedSum}</span></div>
+                </div>
+                
+                ${reducedSum === lifePath1 || reducedSum === lifePath2 ? `
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-heart" style="color:#FF1493;"></i></div>
+                    <div class="result-text">✨ This matches one of your Life Path Numbers! ✨</div>
+                </div>
+                ` : ''}
+                
+                <div class="result-item">
+                    <div class="result-icon"><i class="fas fa-infinity" style="color:#00FF00;"></i></div>
+                    <div class="result-text">Your love is written in the stars! ✨</div>
+                </div>
+            `;
+
+            document.getElementById('results').innerHTML = resultsHTML;
+            document.getElementById('results').classList.add('show');
+
+            // Create celebration effect
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createSparkle();
+                }, i * 50);
+            }
+        }
+
+        function createSparkle() {
+            const sparkle = document.createElement('i');
+            sparkle.className = 'fas fa-star';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.color = `hsl(${Math.random() * 60 + 300}, 100%, 70%)`;
+            sparkle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '9999';
+            sparkle.style.animation = 'sparkleFloat 1s ease-out forwards';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+
+        // Add keyframe for sparkle float
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkleFloat {
+                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(-50px) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Load with example data
+        window.onload = function() {
+            // Set example dates (your special connection)
+            document.getElementById('person1Date').value = '2002-12-03';
+            document.getElementById('person2Date').value = '2007-11-11';
+            
+            // Auto-reveal after 1 second
+            setTimeout(revealConnection, 1000);
+        };
+    </script>
+</body>
+</html>
